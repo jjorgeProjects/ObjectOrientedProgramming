@@ -19,26 +19,57 @@ public class Orco
         this.destreza = destreza;
         this.resistencia = resistencia;
 
-        this.vida = 100 + this.resistencia * 5.0f;
+        vida = 100 + this.resistencia * 5.0f;
     }
 
-    public void Atacar(Orco objetivo)
+    public virtual void Atacar(Orco objetivo)
     {
         float daño = CalcularDañoBasico();
         objetivo.RecibirDaño(daño);
         Debug.Log($"{nombre} ataca a {objetivo.nombre} e inflige {daño} de daño.");
     }
 
-    private float CalcularDañoBasico()
+    public float CalcularDañoBasico()
     {
         //TODO 
         return 0.0f;
     }
 
-    private void RecibirDaño(float daño)
+    public void RecibirDaño(float daño)
     {
-        this.vida -= daño;
+        vida -= daño;
     }
+
+    public virtual void Gritar()
+    {
+        Debug.Log($"¡¡Soy {nombre}!!");
+    }
+
+    public float getFuerza()
+    {
+        return fuerza;
+    }
+
+    public void setFuerza(float fuerza)
+    {
+        this.fuerza = fuerza;
+    }
+
+    public float getVida()
+    {
+        return vida;
+    }
+
+    public string getNombre()
+    {
+        return nombre;
+    }
+
+    public void setVida(float vida)
+    {
+        this.vida = Mathf.Clamp(vida,0f,100f) ;
+    }
+
 
 
 
